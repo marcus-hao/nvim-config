@@ -11,6 +11,16 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
   
+  -- gruvbox theme
+  use {'morhetz/gruvbox', config = function() vim.cmd.colorscheme("gruvbox") end }
+
+  -- Add/change/delete delimiting pairs
+  use {
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function() require("nvim-surround").setup() {} end
+  }
+
   -- Autopairs 
   use {
     'windwp/nvim-autopairs',
@@ -101,10 +111,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- Set 2 spaces indentation 
-vim.o.tabstop = 2 
-vim.o.expandtab = true 
-vim.o.shiftwidth = 2 
+-- Set linux kernel indentation
+vim.o.tabstop = 8 
+vim.o.softtabstop = 8
+vim.o.expandtab = false 
+vim.o.shiftwidth = 8
 vim.o.smartindent = true 
 
 -- Set highlight on search
@@ -132,7 +143,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme gruvbox]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -168,7 +179,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
+    theme = 'gruvbox',
     component_separators = '|',
     section_separators = '',
   },
