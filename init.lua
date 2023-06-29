@@ -59,12 +59,15 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
+  -- Pandocs
+  use 'vim-pandoc/vim-pandoc'
+  use 'vim-pandoc/vim-pandoc-syntax'
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -112,11 +115,20 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- See `:help vim.o`
 
 -- Set linux kernel indentation
-vim.o.tabstop = 8 
-vim.o.softtabstop = 8
-vim.o.expandtab = false 
-vim.o.shiftwidth = 8
-vim.o.smartindent = true 
+-- vim.o.tabstop = 8
+-- vim.o.softtabstop = 8
+-- vim.o.expandtab = false
+-- vim.o.shiftwidth = 8
+-- vim.o.smartindent = true
+
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.expandtab = false
+vim.o.shiftwidth = 4
+vim.o.smartindent = true
+
+-- Auto scroll cursor
+vim.o.scrolloff=10
 
 -- Set highlight on search
 vim.o.hlsearch = false
